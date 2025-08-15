@@ -1,0 +1,26 @@
+name: Auto Branch from Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to push the branch
+    steps:
+      - name: Extract issue number
+        id: vars
+        run: echo "ISSUE_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
+
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main   # change if your default branch is different
+
+      - name: Create new branch
+        run: |
+          BRANCH_NAME="ktpro-${ISSUE_NUMBER}"
+          git checkout -b "$BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
