@@ -17,7 +17,7 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          ref: main   # change if your default branch is different
+          ref: master
 
       - name: Create new branch
         run: |
