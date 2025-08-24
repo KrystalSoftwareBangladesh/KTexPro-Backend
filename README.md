@@ -1,10 +1,13 @@
 # KTexPro
+
 Solution oriented application for your Garments Buying House Business.
+
 ---
 
 ## Prerequisite
 - Python 3
 - PostgreSQL 16
+
 ---
 
 ## 📦 Installation
