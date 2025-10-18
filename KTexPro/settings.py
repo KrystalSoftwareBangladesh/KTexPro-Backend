@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 from KTexPro.env import SECRET_KEY_SETTINGS
 from KTexPro.env import ALLOWED_HOSTS_SETTINGS
@@ -43,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # installed
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     # user defined apps
     'user_api',
+    'lead_api',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +84,25 @@ WSGI_APPLICATION = 'KTexPro.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = DATABASES_SETTINGS
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+}
 
 
 # Password validation
