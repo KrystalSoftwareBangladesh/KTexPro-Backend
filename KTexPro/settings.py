@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # user defined apps
     'user_api',
     'lead_api',
+    'buyer_api',
 ]
 
 MIDDLEWARE = [

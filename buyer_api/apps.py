@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class UserApiConfig(AppConfig):
+class BuyerApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'user_api'
-    verbose_name = 'User'
+    name = 'buyer_api'
+    verbose_name = 'Buyer'
