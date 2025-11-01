@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     # installed
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
     # user defined apps
     'user_api',
     'lead_api',
@@ -87,6 +89,20 @@ WSGI_APPLICATION = 'KTexPro.wsgi.application'
 
 DATABASES = DATABASES_SETTINGS
 
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": f"KTexPro CRM API ({'DEV' if DEBUG else 'PROD'})",
+    "DESCRIPTION": "API documentation for garments CRM system.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "displayRequestDuration": True,
+    },
+}
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -94,6 +110,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 
