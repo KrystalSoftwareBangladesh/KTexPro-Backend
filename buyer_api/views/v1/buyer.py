@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import status
 
+from drf_spectacular.utils import extend_schema, OpenApiRequest
+
 from buyer_api.models import Buyer
 
 from buyer_api.serializers import BuyerSerializer
@@ -24,6 +26,11 @@ class BuyerViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(updated_by=self.request.user)
 
+    @extend_schema(
+        request=OpenApiRequest(UserProfileSerializer(many=True)),
+        responses={201: BuyerSerializer},
+        description="Add multiple contact persons to an existing buyer."
+    )
     @action(detail=True, methods=["post"], url_path="add-contact-persons")
     def add_contact_person(self, request, pk=None):
         buyer = self.get_object()
