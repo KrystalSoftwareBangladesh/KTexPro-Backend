@@ -16,6 +16,7 @@ from datetime import timedelta
 from KTexPro.env import SECRET_KEY_SETTINGS
 from KTexPro.env import ALLOWED_HOSTS_SETTINGS
 from KTexPro.env import DATABASES_SETTINGS
+from KTexPro.env import CORS_ALLOWED_ORIGINS_SETTINGS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     "drf_spectacular",
     "drf_spectacular_sidecar",
+    'corsheaders',
     # user defined apps
     'user_api',
     'lead_api',
@@ -55,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -165,3 +168,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user_api.User'
+
+CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS_SETTINGS
