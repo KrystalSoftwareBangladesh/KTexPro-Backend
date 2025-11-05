@@ -100,3 +100,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
         if groups is not None:
             user.groups.set(groups)
         return user
+
+
+class UserExistenceCheckSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=False)
+    username = serializers.CharField(required=False)
+
+    def validate(self, data):
+        if not data.get("email") and not data.get("username"):
+            raise serializers.ValidationError(
+                "Either email or username must be provided."
+            )
+        return data

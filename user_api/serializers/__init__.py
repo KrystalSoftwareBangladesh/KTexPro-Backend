@@ -1,9 +1,10 @@
-from user_api.serializers.auth import TokenSerializer
-from user_api.serializers.auth import ChangePasswordSerializer
-from user_api.serializers.user import UserProfileSerializer
-from user_api.serializers.permission import PermissionSerializer
-from user_api.serializers.group import GroupSerializer
-from user_api.serializers.group import AssignGroupSerializer
+from .auth import TokenSerializer
+from .auth import ChangePasswordSerializer
+from .user import UserProfileSerializer
+from .user import UserExistenceCheckSerializer
+from .permission import PermissionSerializer
+from .group import GroupSerializer
+from .group import AssignGroupSerializer
 
 
 __all__ = [
@@ -13,4 +14,5 @@ __all__ = [
     PermissionSerializer,
     GroupSerializer,
     AssignGroupSerializer,
+    "UserExistenceCheckSerializer",
 ]
