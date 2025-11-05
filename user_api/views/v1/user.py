@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import generics, permissions
 from rest_framework import status
 
+from drf_spectacular.utils import extend_schema
+
 from user_api.models import User
 
 from user_api.serializers import UserProfileSerializer
@@ -44,7 +46,14 @@ class UserExistenceCheckView(APIView):
     POST /user/v1/verify/
     Check if a user exists by email or username.
     """
+    serializer_class = UserExistenceCheckSerializer
 
+    @extend_schema(
+        request=UserExistenceCheckSerializer,
+        responses={200: None},
+        summary="Verify if a user exists by email or username",
+        description="Accepts either an email or username and returns whether the user exists.", # noqa
+    )
     def post(self, request):
         serializer = UserExistenceCheckSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
