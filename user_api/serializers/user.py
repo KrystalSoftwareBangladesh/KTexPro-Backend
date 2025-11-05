@@ -8,12 +8,14 @@ from user_api.models import User
 class UserProfileSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True,
-        required=True,
+        # required=True,
+        required=False,
         validators=[validate_password],
     )
     confirm_password = serializers.CharField(
         write_only=True,
-        required=True,
+        # required=True,
+        required=False,
     )
 
     class Meta:
@@ -56,10 +58,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         password = data.get('password', None)
         confirm_password = data.get('confirm_password', None)
 
-        if not password or not confirm_password:
-            raise serializers.ValidationError({
-                "password": "Password and Confirm Password both required",
-            })
+        # if not password or not confirm_password:
+        #     raise serializers.ValidationError({
+        #         "password": "Password and Confirm Password both required",
+        #     })
 
         if password != confirm_password:
             raise serializers.ValidationError({
@@ -71,14 +73,30 @@ class UserProfileSerializer(serializers.ModelSerializer):
             Create a new user and assign a role.
         """
         self._create_validation(data=validated_data)
-        validated_data.pop('confirm_password')
+
+        validated_data.pop('confirm_password', None)
         groups = validated_data.pop('groups', [])
-        user = User.objects.create_user(**validated_data)
+
+        password = validated_data.pop('password', None)
+        # user = User.objects.create_user(**validated_data)
+        user = User(**validated_data)
+
+        if password:
+            user.set_password(password)
+        else:
+            user.set_unusable_password()
+
+        user.save()
         user.groups.set(groups)
 
         return user
 
     def update(self, instance, validated_data):
         validated_data.pop('password', None)
+        validated_data.pop('confirm_password', None)
+        groups = validated_data.pop('groups', None)
 
-        return super().update(instance, validated_data)
+        user = super().update(instance, validated_data)
+        if groups is not None:
+            user.groups.set(groups)
+        return user
