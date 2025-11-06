@@ -38,6 +38,7 @@ urlpatterns = [
         name="redoc"
     ),
     # API routes
+    path('meta/', include('meta_api.urls')),
     path('user/', include('user_api.urls')),
     path('buyer/', include('buyer_api.urls')),
     path('supplier/', include('supplier_api.urls')),

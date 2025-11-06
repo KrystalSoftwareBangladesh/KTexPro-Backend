@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('style_api', '0002_season_created_at_season_updated_at'),
+        ('meta_api', '0002_season_created_at_season_updated_at'),
     ]
 
     operations = [

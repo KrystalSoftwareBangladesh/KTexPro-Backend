@@ -5,7 +5,7 @@ from django.conf import settings
 import json
 import os
 
-from style_api.models import Season
+from meta_api.models import Season
 
 
 class Command(BaseCommand):
