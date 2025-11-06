@@ -16,7 +16,7 @@ from datetime import timedelta
 from KTexPro.env import SECRET_KEY_SETTINGS
 from KTexPro.env import ALLOWED_HOSTS_SETTINGS
 from KTexPro.env import DATABASES_SETTINGS
-from KTexPro.env import CORS_ALLOWED_ORIGINS_SETTINGS
+from KTexPro.env import CORS_ALLOWED_ORIGINS_SETTINGS           # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'lead_api',
     'buyer_api',
     'supplier_api',
+    'style_api',
 ]
 
 MIDDLEWARE = [

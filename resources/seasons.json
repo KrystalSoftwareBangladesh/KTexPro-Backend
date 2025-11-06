@@ -1,0 +1,64 @@
+{
+    "seasons": [
+        {
+            "name": "Spring",
+            "code": "SP",
+            "order": 1,
+            "description": "Spring season"
+        },
+        {
+            "name": "Summer",
+            "code": "SU",
+            "order": 2,
+            "description": "Summer season"
+        },
+        {
+            "name": "Fall",
+            "code": "FA",
+            "order": 3,
+            "description": "Fall/Autumn season"
+        },
+        {
+            "name": "Winter",
+            "code": "WI",
+            "order": 4,
+            "description": "Winter season"
+        },
+        {
+            "name": "Spring/Summer",
+            "code": "SS",
+            "order": 5,
+            "description": "Spring and Summer combined season"
+        },
+        {
+            "name": "Fall/Winter",
+            "code": "FW",
+            "order": 6,
+            "description": "Fall and Winter combined season"
+        },
+        {
+            "name": "Pre-Fall",
+            "code": "PF",
+            "order": 7,
+            "description": "Pre-Fall season"
+        },
+        {
+            "name": "Holiday",
+            "code": "HD",
+            "order": 8,
+            "description": "Holiday season"
+        },
+        {
+            "name": "Resort",
+            "code": "RS",
+            "order": 9,
+            "description": "Resort/Cruise season"
+        },
+        {
+            "name": "All Season",
+            "code": "AS",
+            "order": 10,
+            "description": "Year-round season"
+        }
+    ]
+}
