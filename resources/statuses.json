@@ -1,0 +1,517 @@
+{
+    "style_statuses": [
+        {
+            "name": "Inquiry",
+            "code": "INQ",
+            "parent": null,
+            "order": 1,
+            "is_active": true,
+            "color": "#3B82F6",
+            "description": "Initial inquiry stage for new style"
+        },
+        {
+            "name": "Inquiry Received",
+            "code": "INQ_RCV",
+            "parent": "INQ",
+            "order": 1,
+            "is_active": true,
+            "color": "#60A5FA",
+            "description": "Inquiry received from buyer"
+        },
+        {
+            "name": "Inquiry Under Review",
+            "code": "INQ_REV",
+            "parent": "INQ",
+            "order": 2,
+            "is_active": true,
+            "color": "#93C5FD",
+            "description": "Inquiry is being reviewed internally"
+        },
+        {
+            "name": "Sent to Supplier",
+            "code": "INQ_SENT",
+            "parent": "INQ",
+            "order": 3,
+            "is_active": true,
+            "color": "#BFDBFE",
+            "description": "Inquiry details sent to supplier"
+        },
+        {
+            "name": "Quotation",
+            "code": "QUOT",
+            "parent": null,
+            "order": 2,
+            "is_active": true,
+            "color": "#F59E0B",
+            "description": "Quotation and pricing stage"
+        },
+        {
+            "name": "Costing in Progress",
+            "code": "QUOT_COST",
+            "parent": "QUOT",
+            "order": 1,
+            "is_active": true,
+            "color": "#FBBF24",
+            "description": "Costing calculation in progress"
+        },
+        {
+            "name": "Quotation Sent",
+            "code": "QUOT_SENT",
+            "parent": "QUOT",
+            "order": 2,
+            "is_active": true,
+            "color": "#FCD34D",
+            "description": "Quotation sent to buyer"
+        },
+        {
+            "name": "Negotiation",
+            "code": "QUOT_NEG",
+            "parent": "QUOT",
+            "order": 3,
+            "is_active": true,
+            "color": "#FDE68A",
+            "description": "Price negotiation with buyer"
+        },
+        {
+            "name": "Sample Development",
+            "code": "SAMPLE",
+            "parent": null,
+            "order": 3,
+            "is_active": true,
+            "color": "#8B5CF6",
+            "description": "Sample development and approval stage"
+        },
+        {
+            "name": "Fabric/Trim Received",
+            "code": "SMP_MAT_RCV",
+            "parent": "SAMPLE",
+            "order": 1,
+            "is_active": true,
+            "color": "#A78BFA",
+            "description": "Sample fabric/trims received in Bangladesh"
+        },
+        {
+            "name": "Sample Cutting",
+            "code": "SMP_CUT",
+            "parent": "SAMPLE",
+            "order": 2,
+            "is_active": true,
+            "color": "#C4B5FD",
+            "description": "Sample cutting in progress"
+        },
+        {
+            "name": "Sample Sewing",
+            "code": "SMP_SEW",
+            "parent": "SAMPLE",
+            "order": 3,
+            "is_active": true,
+            "color": "#DDD6FE",
+            "description": "Sample sewing in progress"
+        },
+        {
+            "name": "Sample Finishing",
+            "code": "SMP_FIN",
+            "parent": "SAMPLE",
+            "order": 4,
+            "is_active": true,
+            "color": "#EDE9FE",
+            "description": "Sample finishing and quality check"
+        },
+        {
+            "name": "Sample Sent to Buyer",
+            "code": "SMP_SENT",
+            "parent": "SAMPLE",
+            "order": 5,
+            "is_active": true,
+            "color": "#F5F3FF",
+            "description": "Sample dispatched to buyer"
+        },
+        {
+            "name": "Awaiting Sample Approval",
+            "code": "SMP_WAIT",
+            "parent": "SAMPLE",
+            "order": 6,
+            "is_active": true,
+            "color": "#FAF5FF",
+            "description": "Waiting for buyer's sample approval"
+        },
+        {
+            "name": "Sample Approved",
+            "code": "SMP_APP",
+            "parent": "SAMPLE",
+            "order": 7,
+            "is_active": true,
+            "color": "#10B981",
+            "description": "Sample approved by buyer"
+        },
+        {
+            "name": "Sample Rejected",
+            "code": "SMP_REJ",
+            "parent": "SAMPLE",
+            "order": 8,
+            "is_active": true,
+            "color": "#EF4444",
+            "description": "Sample rejected, revisions needed"
+        },
+        {
+            "name": "Order Confirmation",
+            "code": "ORD",
+            "parent": null,
+            "order": 4,
+            "is_active": true,
+            "color": "#06B6D4",
+            "description": "Order confirmation and documentation"
+        },
+        {
+            "name": "Awaiting PO",
+            "code": "ORD_PO_WAIT",
+            "parent": "ORD",
+            "order": 1,
+            "is_active": true,
+            "color": "#22D3EE",
+            "description": "Waiting for purchase order from buyer"
+        },
+        {
+            "name": "PO Received",
+            "code": "ORD_PO_RCV",
+            "parent": "ORD",
+            "order": 2,
+            "is_active": true,
+            "color": "#67E8F9",
+            "description": "Purchase order received"
+        },
+        {
+            "name": "LC Opening",
+            "code": "ORD_LC",
+            "parent": "ORD",
+            "order": 3,
+            "is_active": true,
+            "color": "#A5F3FC",
+            "description": "Letter of Credit opening in progress"
+        },
+        {
+            "name": "Order Confirmed",
+            "code": "ORD_CONF",
+            "parent": "ORD",
+            "order": 4,
+            "is_active": true,
+            "color": "#CFFAFE",
+            "description": "Order fully confirmed"
+        },
+        {
+            "name": "Pre-Production",
+            "code": "PRE_PROD",
+            "parent": null,
+            "order": 5,
+            "is_active": true,
+            "color": "#EC4899",
+            "description": "Pre-production preparation stage"
+        },
+        {
+            "name": "Tech Pack Review",
+            "code": "PP_TECH",
+            "parent": "PRE_PROD",
+            "order": 1,
+            "is_active": true,
+            "color": "#F472B6",
+            "description": "Technical package review"
+        },
+        {
+            "name": "Fabric Booking",
+            "code": "PP_FAB_BOOK",
+            "parent": "PRE_PROD",
+            "order": 2,
+            "is_active": true,
+            "color": "#F9A8D4",
+            "description": "Fabric booking with supplier"
+        },
+        {
+            "name": "Trim Booking",
+            "code": "PP_TRIM_BOOK",
+            "parent": "PRE_PROD",
+            "order": 3,
+            "is_active": true,
+            "color": "#FBCFE8",
+            "description": "Trims and accessories booking"
+        },
+        {
+            "name": "Lab Dip Approval",
+            "code": "PP_LAB",
+            "parent": "PRE_PROD",
+            "order": 4,
+            "is_active": true,
+            "color": "#FCE7F3",
+            "description": "Lab dip color approval"
+        },
+        {
+            "name": "PP Meeting Done",
+            "code": "PP_MEET",
+            "parent": "PRE_PROD",
+            "order": 5,
+            "is_active": true,
+            "color": "#FDF2F8",
+            "description": "Pre-production meeting completed"
+        },
+        {
+            "name": "Production",
+            "code": "PROD",
+            "parent": null,
+            "order": 6,
+            "is_active": true,
+            "color": "#10B981",
+            "description": "Production in progress"
+        },
+        {
+            "name": "Fabric In-House",
+            "code": "PROD_FAB_IN",
+            "parent": "PROD",
+            "order": 1,
+            "is_active": true,
+            "color": "#34D399",
+            "description": "Fabric received at factory"
+        },
+        {
+            "name": "Cutting",
+            "code": "PROD_CUT",
+            "parent": "PROD",
+            "order": 2,
+            "is_active": true,
+            "color": "#6EE7B7",
+            "description": "Cutting in progress"
+        },
+        {
+            "name": "Sewing",
+            "code": "PROD_SEW",
+            "parent": "PROD",
+            "order": 3,
+            "is_active": true,
+            "color": "#A7F3D0",
+            "description": "Sewing in progress"
+        },
+        {
+            "name": "Washing",
+            "code": "PROD_WASH",
+            "parent": "PROD",
+            "order": 4,
+            "is_active": true,
+            "color": "#D1FAE5",
+            "description": "Garment washing in progress"
+        },
+        {
+            "name": "Finishing",
+            "code": "PROD_FIN",
+            "parent": "PROD",
+            "order": 5,
+            "is_active": true,
+            "color": "#ECFDF5",
+            "description": "Finishing and pressing"
+        },
+        {
+            "name": "Quality Inspection",
+            "code": "QC",
+            "parent": null,
+            "order": 7,
+            "is_active": true,
+            "color": "#14B8A6",
+            "description": "Quality control and inspection"
+        },
+        {
+            "name": "Inline Inspection",
+            "code": "QC_INLINE",
+            "parent": "QC",
+            "order": 1,
+            "is_active": true,
+            "color": "#2DD4BF",
+            "description": "Inline quality inspection during production"
+        },
+        {
+            "name": "Final Inspection",
+            "code": "QC_FINAL",
+            "parent": "QC",
+            "order": 2,
+            "is_active": true,
+            "color": "#5EEAD4",
+            "description": "Final inspection after production"
+        },
+        {
+            "name": "Buyer Inspection Pending",
+            "code": "QC_BUYER_PEND",
+            "parent": "QC",
+            "order": 3,
+            "is_active": true,
+            "color": "#99F6E4",
+            "description": "Waiting for buyer's inspection"
+        },
+        {
+            "name": "Inspection Passed",
+            "code": "QC_PASS",
+            "parent": "QC",
+            "order": 4,
+            "is_active": true,
+            "color": "#CCFBF1",
+            "description": "Quality inspection passed"
+        },
+        {
+            "name": "Inspection Failed",
+            "code": "QC_FAIL",
+            "parent": "QC",
+            "order": 5,
+            "is_active": true,
+            "color": "#EF4444",
+            "description": "Quality inspection failed, rework needed"
+        },
+        {
+            "name": "Shipment",
+            "code": "SHIP",
+            "parent": null,
+            "order": 8,
+            "is_active": true,
+            "color": "#6366F1",
+            "description": "Shipment and delivery stage"
+        },
+        {
+            "name": "Packing",
+            "code": "SHIP_PACK",
+            "parent": "SHIP",
+            "order": 1,
+            "is_active": true,
+            "color": "#818CF8",
+            "description": "Packing in progress"
+        },
+        {
+            "name": "Ready for Shipment",
+            "code": "SHIP_RDY",
+            "parent": "SHIP",
+            "order": 2,
+            "is_active": true,
+            "color": "#A5B4FC",
+            "description": "Goods ready for shipment"
+        },
+        {
+            "name": "Shipped",
+            "code": "SHIP_DONE",
+            "parent": "SHIP",
+            "order": 3,
+            "is_active": true,
+            "color": "#C7D2FE",
+            "description": "Shipment dispatched"
+        },
+        {
+            "name": "In Transit",
+            "code": "SHIP_TRANS",
+            "parent": "SHIP",
+            "order": 4,
+            "is_active": true,
+            "color": "#E0E7FF",
+            "description": "Goods in transit"
+        },
+        {
+            "name": "Delivered",
+            "code": "SHIP_DEL",
+            "parent": "SHIP",
+            "order": 5,
+            "is_active": true,
+            "color": "#EEF2FF",
+            "description": "Goods delivered to buyer"
+        },
+        {
+            "name": "Closed",
+            "code": "CLOSED",
+            "parent": null,
+            "order": 9,
+            "is_active": true,
+            "color": "#22C55E",
+            "description": "Order completed and closed"
+        },
+        {
+            "name": "Payment Received",
+            "code": "CLOSED_PAID",
+            "parent": "CLOSED",
+            "order": 1,
+            "is_active": true,
+            "color": "#4ADE80",
+            "description": "Payment received from buyer"
+        },
+        {
+            "name": "Order Completed",
+            "code": "CLOSED_COMP",
+            "parent": "CLOSED",
+            "order": 2,
+            "is_active": true,
+            "color": "#86EFAC",
+            "description": "Order fully completed"
+        },
+        {
+            "name": "Cancelled/Dropped",
+            "code": "CANCEL",
+            "parent": null,
+            "order": 10,
+            "is_active": true,
+            "color": "#EF4444",
+            "description": "Order cancelled or dropped"
+        },
+        {
+            "name": "Dropped by Buyer",
+            "code": "CANCEL_BUYER",
+            "parent": "CANCEL",
+            "order": 1,
+            "is_active": true,
+            "color": "#F87171",
+            "description": "Order dropped by buyer"
+        },
+        {
+            "name": "Dropped Internally",
+            "code": "CANCEL_INT",
+            "parent": "CANCEL",
+            "order": 2,
+            "is_active": true,
+            "color": "#FCA5A5",
+            "description": "Order dropped internally"
+        },
+        {
+            "name": "Lost to Competition",
+            "code": "CANCEL_COMP",
+            "parent": "CANCEL",
+            "order": 3,
+            "is_active": true,
+            "color": "#FECACA",
+            "description": "Order lost to competitor"
+        },
+        {
+            "name": "On Hold",
+            "code": "HOLD",
+            "parent": null,
+            "order": 11,
+            "is_active": true,
+            "color": "#F59E0B",
+            "description": "Order temporarily on hold"
+        },
+        {
+            "name": "Buyer Request",
+            "code": "HOLD_BUYER",
+            "parent": "HOLD",
+            "order": 1,
+            "is_active": true,
+            "color": "#FBBF24",
+            "description": "On hold due to buyer request"
+        },
+        {
+            "name": "Material Delay",
+            "code": "HOLD_MAT",
+            "parent": "HOLD",
+            "order": 2,
+            "is_active": true,
+            "color": "#FCD34D",
+            "description": "On hold due to material delay"
+        },
+        {
+            "name": "Capacity Issue",
+            "code": "HOLD_CAP",
+            "parent": "HOLD",
+            "order": 3,
+            "is_active": true,
+            "color": "#FDE68A",
+            "description": "On hold due to capacity constraints"
+        }
+    ]
+}

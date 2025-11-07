@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'buyer_api',
     'supplier_api',
     'meta_api',
+    'style_api',
 ]
 
 MIDDLEWARE = [
