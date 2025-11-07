@@ -1,0 +1,24 @@
+{
+    "departments": [
+        {
+            "name": "Men's",
+            "description": "Department of men's"
+        },
+        {
+            "name": "Women's",
+            "description": "Department of women's"
+        },
+        {
+            "name": "Kids",
+            "description": "Department of kids"
+        },
+        {
+            "name": "Infant",
+            "description": "Department of infant"
+        },
+        {
+            "name": "Unisex",
+            "description": "Department of unisex"
+        }
+    ]
+}
