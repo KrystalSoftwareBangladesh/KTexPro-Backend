@@ -23,6 +23,7 @@ class LoginView(TokenObtainPairView):
 
     def post(self, request, *args, **kwargs):
         request.data['username'] = request.data.get('credential', None)
+        request.data['email'] = request.data.get('credential', None)
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
