@@ -2,16 +2,64 @@ from rest_framework import serializers
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+from django.contrib.auth import get_user_model
+from django.db.models import Q
 from django.contrib.auth.password_validation import validate_password
 
 from user_api.models import User
 
+# User = get_user_model()
+# class TokenSerializer(TokenObtainPairSerializer):
+#     credential = serializers.CharField(write_only=True)
+
+#     def to_internal_value(self, data):
+#         return super().to_internal_value(data)
+
+#     @classmethod
+#     def get_token(cls, user):
+#         token = super().get_token(user)
+#         token['username'] = user.username
+#         token['email'] = user.email
+#         return token
+
+#     def validate(self, attrs):
+#         user = self._get_user(
+#             credential=attrs.get('credential', None),
+#             password=attrs.get('password', None),
+#         )
+
+#         if not user:
+#             raise AuthenticationFailed("User not found!")
+
+#         data = super().validate({
+#             'username': user.username,
+#             'password': attrs.get('password'),
+#         })
+#         user = self.user
+
+#         data.update({
+#             'user_id': user.id,
+#             'username': user.username,
+#             'email': user.email,
+#             'roles': [group.name for group in user.groups.all()],
+#         })
+#         return data
+
+#     def _get_user(self, credential, password):
+#         """
+#             Authenticate using username, email, or phone number.
+#         """
+#         user = User.objects.filter(email=credential).first() or \
+#             User.objects.filter(username=credential).first()
+
+#         if user and user.check_password(password):
+#             return user
+
+#         return None
+
 
 class TokenSerializer(TokenObtainPairSerializer):
     credential = serializers.CharField(write_only=True)
-
-    def to_internal_value(self, data):
-        return super().to_internal_value(data)
 
     @classmethod
     def get_token(cls, user):
@@ -21,18 +69,26 @@ class TokenSerializer(TokenObtainPairSerializer):
         return token
 
     def validate(self, attrs):
-        user = self._get_user(
-            credential=attrs.get('credential', None),
-            password=attrs.get('password', None),
-        )
+        credential = attrs.get('credential', None)
+        password = attrs.get('password', None)
+
+        user = self._get_user(credential=credential, password=password)
 
         if not user:
-            raise AuthenticationFailed("User not found!")
+            raise AuthenticationFailed("User not found or invalid credentials")
 
-        data = super().validate({
-            'username': user.username,
-            'password': attrs.get('password'),
-        })
+        UserModel = get_user_model()
+        username_field = getattr(UserModel, "USERNAME_FIELD", "username")
+        username_value = getattr(user, username_field, None)
+
+        payload = {
+            username_field: username_value,
+            'password': password,
+        }
+
+        data = super().validate(payload)
+
+        self.user = user
         user = self.user
 
         data.update({
@@ -45,10 +101,13 @@ class TokenSerializer(TokenObtainPairSerializer):
 
     def _get_user(self, credential, password):
         """
-            Authenticate using username, email, or phone number.
+        Authenticate using email or username. Use a forgiving lookup for email.
         """
-        user = User.objects.filter(email=credential).first() or \
-            User.objects.filter(username=credential).first()
+        if not credential or not password:
+            return None
+
+        user = User.objects.filter(
+            Q(email__iexact=credential) | Q(username=credential)).first()
 
         if user and user.check_password(password):
             return user
