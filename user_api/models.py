@@ -40,8 +40,10 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    # USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = []
 
     @property
     def full_name(self) -> str:
