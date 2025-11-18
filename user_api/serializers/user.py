@@ -50,6 +50,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     def _create_validation(self, data):
         if not data.get('username', None):
+            data['username'] = data.get('email', None)
+
+        if not data.get('username', None):
             raise serializers.ValidationError({"username": "Username required"})    # noqa
 
         if not data.get('email', None):
